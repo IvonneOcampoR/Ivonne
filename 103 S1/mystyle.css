@@ -1,0 +1,91 @@
+body{
+    font-family: 'Raleway', sans-serif;
+}
+header{
+    background-image:url(dog/banner.jpg);
+    height: 50vh;
+    background-position: center center;
+    background-size: cover;
+    background-color: greenyellow;
+
+}
+
+h1{
+    text-align: center;
+    display: block;
+    padding: 10vh;
+    font-size:40px;
+    background-image: (rgba 71, 41, 41, 0.145);
+}
+
+main{
+    padding-top: 20px;
+    height: 150vh;
+}
+
+footer{
+    background:black;
+    height: 10vh;
+}
+
+.location{
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 500px;
+    -webkit-filter:blur(1px);
+    filter:blur(1px);
+    }
+
+.pom{
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 500px;
+    -webkit-filter:sepia(100%);
+    filter:sepia(100%);
+}
+
+.flower{
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 500px;
+    -webkit-filter:saturate(20%);
+    filter:saturate(20%);
+}
+
+.doggy{
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 500px;
+    -webkit-filter:opacity(75%);
+    filter:opacity(75%);
+
+}
+
+
+figure{
+    width: 450px;
+    display:block;
+    margin-right: auto;
+    margin-left: auto;
+}
+.container{
+    position: relative;
+}
+.center{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+    color:greenyellow;
+}
+
+img{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
