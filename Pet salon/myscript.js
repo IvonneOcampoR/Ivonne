@@ -8,7 +8,7 @@ const salon = {
         number:"362-G"
     },
     workingHours:{
-        days:"Mon-Fris",
+        days:"Mon-Fri",
         open:"9:00 am",
         close:"5:00 pm"
     },
@@ -22,11 +22,7 @@ const salon = {
 
 let {name,phone,address:{street,number},workingHours:{days,open,close}}=salon;
 
-document.getElementById("col1").innerHTML=`<h2 class="h2"> ${name} </h2> <p class="lead"> Phone number: ${phone} </p>`;
-
-document.getElementById("col2").innerHTML=`<p class="lead"> Addres Information </p> <p class="lead"> Street: ${street} ${number} </p>`;
-
-document.getElementById("col3").innerHTML=`<p class="lead"> It's open from ${days} ${open} to ${close}. </p>`;
+document.querySelector(".info").innerHTML=`<p> ${name} <br> ${street} , ${number} <br> ${days}  from ${open} to ${close} <br> ${phone}`;
 
 //object constructor
 
@@ -56,26 +52,68 @@ class Pet{
    
 }
 
-const pet1 = new Pet("Peluchin",11,"Chihuahua","Male","Shower","Ivonne","33547860");
-const pet2 = new Pet("Scoby",5,"Great Dane","Male","Nail cut","Marcus","88976504");
-const pet3 = new Pet("Leila",2,"French Puddle","Female","Haircut","Sabrina","378937810");
+//const pet1 = new Pet("Peluchin",11,"Chihuahua","Male","Shower","Ivonne","33547860");
+//salon.pets.push(pet1);
 
-console.log(salon);
 
-salon.pets.push(pet1);
-salon.pets.push(pet2);
-salon.pets.push(pet3);
 
-console.table(salon.pets);
+var textname =document.getElementById('petName');
+var textage =document.getElementById('petAge');
+var textbreed =document.getElementById('petBreed');
+var textgender =document.getElementById('petGender');
+var textservice =document.getElementById('petService');
+var textowner =document.getElementById('ownerName');
+var textphone =document.getElementById('contactPhone');
 
-//display an alert message the number of pets
-
-salon.count();
-
-var text = " ";
-for(var i=0;i<salon.pets.length;i++)
-{
-   text += `<p> Name: ${salon.pets[i].name} </p> <br> Age: ${salon.pets[i].age} </br> <br> Gender: ${salon.pets[i].gender} </br> <br> Breed: ${salon.pets[i].breed} </br>`;
+function register(){
+    const thePet = new Pet (textname.value,textage.value,textbreed.value,textgender.value,textservice.value,textowner.value,textphone.value);
+    
+    salon.pets.push(thePet);
+    alert("Pet Registered");
+    clean();
+    displayPet(thePet);
 }
 
-document.getElementById("content").innerHTML=text;
+function clean(){
+   textname.value="";
+   textage.value="";
+   textbreed.value="";
+   textgender.value="";
+   textservice.value="";
+   textowner.value="";
+   textphone.value="";
+}
+
+function displayPet(aPet){
+    var tBody = document.getElementById("rowPet");
+    var row = `<tr id="${aPet.id}">
+                    <td>${aPet.name} </td>
+                    <td>${aPet.age} </td>
+                    <td>${aPet.breed} </td>
+                    <td>${aPet.gender} </td>
+                    <td>${aPet.service} </td>
+                    <td>${aPet.ownerName} </td>
+                    <td>${aPet.phoneContact} </td>
+                    <td>
+                    <button onclick='remove("${aPet.id}");'> Delete </button>
+                    </td>`;
+
+    tBody.innerHTML+=row;
+}
+
+function remove(petId){
+    var tr = document.getElementById(petId);
+    var indexDelete;
+   
+    for(var i=0;i<salon.pets.length;i++){
+        var selectedPet = salon.pets[i];
+        
+        if(selectedPet.id == petId)
+         {
+             indexDelete=i;
+         }
+    }
+    salon.pets.splice(indexDelete,1);
+    tr.remove();
+   
+}
